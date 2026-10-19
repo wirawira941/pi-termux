@@ -55,7 +55,7 @@ jobs:
           # coding-agent build fails with TS2307 unless these are built first
           for pkg in tui ai agent codemode mcp telemetry; do
             echo "--- building packages/$pkg"
-            (cd "packages/$pkg" && npx tsc -b 2>/dev/null || npx tsc -p tsconfig.json)
+            (cd "packages/$pkg" && npm run build)
           done
 
       - name: Build coding-agent
