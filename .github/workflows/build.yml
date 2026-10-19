@@ -55,9 +55,11 @@ jobs:
           # coding-agent build fails with TS2307 unless these are built first
           for pkg in tui ai agent codemode mcp telemetry; do
             echo "--- building packages/$pkg"
-            # NB: use tsc directly, not `npm run build` — the ai package's
-            # build script runs generate-models via plain node which can't
-            # execute .ts files; we only need the TS compiled.
+            # ai needs its model data generated first; the generate-models
+            # script is TypeScript so run it with bun (plain node can't).
+            if [ "$pkg" = "ai" ]; then
+              (cd "packages/ai" && bun scripts/generate-models.ts --strict)
+            fi
             (cd "packages/$pkg" && npx tsc -p tsconfig.build.json)
           done
 
