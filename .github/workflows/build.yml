@@ -52,8 +52,9 @@ jobs:
       - name: Build workspace packages
         working-directory: /tmp/pi-src
         run: |
-          # coding-agent build fails with TS2307 unless these are built first
-          for pkg in tui ai agent codemode mcp telemetry; do
+          # coding-agent build fails with TS2307 unless these are built first.
+          # telemetry must come before ai (ai imports @earendil-works/pi-telemetry).
+          for pkg in telemetry tui ai agent codemode mcp; do
             echo "--- building packages/$pkg"
             # ai needs its model data generated first; the generate-models
             # script is TypeScript so run it with bun (plain node can't).
