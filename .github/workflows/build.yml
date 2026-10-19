@@ -66,7 +66,11 @@ jobs:
 
       - name: Build coding-agent
         working-directory: /tmp/pi-src/packages/coding-agent
-        run: npm run build
+        # NB: use build:unbundled, not build — the bundle validation script
+        # fails on Node 20 because isBuiltin('node:sqlite') is false
+        # (node:sqlite was added in Node 22.5). We compile from dist/bun/cli.js
+        # anyway, so the bundle step is unnecessary.
+        run: npm run build:unbundled
 
       - name: Compile for Android
         working-directory: /tmp/pi-src/packages/coding-agent
