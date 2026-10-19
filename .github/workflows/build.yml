@@ -8,6 +8,8 @@
 # Trigger: Actions tab -> "build" -> Run workflow.
 
 name: build
+permissions:
+  contents: write
 
 on:
   workflow_dispatch:
