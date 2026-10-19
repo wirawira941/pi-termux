@@ -1,1 +1,16 @@
-IyEvZGF0YS9kYXRhL2NvbS50ZXJtdXgvZmlsZXMvdXNyL2Jpbi9iYXNoCnNldCAtZXVvIHBpcGVmYWlsCkhFUkU9IiQoY2QgIiQoZGlybmFtZSAiJDAiKSIgJiYgcHdkKSIKUFJFRklYPSIke1BSRUZJWDotL2RhdGEvZGF0YS9jb20udGVybXV4L2ZpbGVzL3Vzcn0iCkxJQkVYRUM9IiRQUkVGSVgvbGliZXhlYy9waS10ZXJtdXgiCkJJTj0iJFBSRUZJWC9iaW4iCm1rZGlyIC1wICIkTElCRVhFQyIgIiRCSU4iCmNwICIkSEVSRS9waS5iaW4iICIkTElCRVhFQy9waS5iaW4iCmNwICIkSEVSRS9waSIgIiRCSU4vcGktdGVybXV4IgpjcCAiJEhFUkUvcGFja2FnZS5qc29uIiAiJExJQkVYRUMvcGFja2FnZS5qc29uIgpbIC1kICIkSEVSRS9kb2NzIiBdICYmIGNwIC1yICIkSEVSRS9kb2NzIiAiJExJQkVYRUMvZG9jcyIKWyAtZCAiJEhFUkUvdGhlbWUiIF0gJiYgY3AgLXIgIiRIRVJFL3RoZW1lIiAiJExJQkVYRUMvdGhlbWUiClsgLWQgIiRIRVJFL2Fzc2V0cyIgXSAmJiBjcCAtciAiJEhFUkUvYXNzZXRzIiAiJExJQkVYRUMvYXNzZXRzIgpjaG1vZCA3NTUgIiRMSUJFWEVDL3BpLmJpbiIgIiRCSU4vcGktdGVybXV4IgplY2hvICJJbnN0YWxsZWQ6IHBpLXRlcm11eCIKZWNobyAiUnVuOiBwaS10ZXJtdXggLS1oZWxwIgo=
+#!/data/data/com.termux/files/usr/bin/bash
+set -euo pipefail
+HERE="$(cd "$(dirname "$0")" && pwd)"
+PREFIX="${PREFIX:-/data/data/com.termux/files/usr}"
+LIBEXEC="$PREFIX/libexec/pi-termux"
+BIN="$PREFIX/bin"
+mkdir -p "$LIBEXEC" "$BIN"
+cp "$HERE/pi.bin" "$LIBEXEC/pi.bin"
+cp "$HERE/pi" "$BIN/pi-termux"
+cp "$HERE/package.json" "$LIBEXEC/package.json"
+[ -d "$HERE/docs" ] && cp -r "$HERE/docs" "$LIBEXEC/docs"
+[ -d "$HERE/theme" ] && cp -r "$HERE/theme" "$LIBEXEC/theme"
+[ -d "$HERE/assets" ] && cp -r "$HERE/assets" "$LIBEXEC/assets"
+chmod 755 "$LIBEXEC/pi.bin" "$BIN/pi-termux"
+echo "Installed: pi-termux"
+echo "Run: pi-termux --help"
