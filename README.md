@@ -1,1 +1,83 @@
-IyBwaS10ZXJtdXgKClJ1biB0aGUgKipQaSBjb2RpbmcgYWdlbnQqKiBuYXRpdmVseSBvbiAqKlRlcm11eCoqIChBbmRyb2lkIGFhcmNoNjQpLgoKUGkgKFtlYXJlbmRpbC13b3Jrcy9waV0oaHR0cHM6Ly9naXRodWIuY29tL2VhcmVuZGlsLXdvcmtzL3BpKSkgaXMgYQp0b2tlbi1lZmZpY2llbnQgY29kaW5nIGFnZW50IChzdWItMSwwMDAtdG9rZW4gc3lzdGVtIHByb21wdCkgd2l0aCA0IGNvcmUgdG9vbHMKKFJlYWQvV3JpdGUvRWRpdC9CYXNoKSBhbmQgYnVpbHQtaW4gTUNQIHN1cHBvcnQuIEl0IGhhcyAqKm5vIG5hdGl2ZQpkZXBlbmRlbmNpZXMqKiBhbmQgYWxyZWFkeSBidW5kbGVzIHRvIGEgc2luZ2xlIGZpbGUsIG1ha2luZyBpdCB0aGUgZWFzaWVzdAphZ2VudCB0byBwb3J0IHRvIFRlcm11eC4KCiMjIFF1aWNrIGluc3RhbGwKCmBgYHNoCiMgRG93bmxvYWQgdGhlIGxhdGVzdCBwaS10ZXJtdXggemlwIGZyb20gUmVsZWFzZXMKbWtkaXIgfi9waS10ZXJtdXggJiYgY2Qgfi9waS10ZXJtdXgKdW56aXAgfi9waS10ZXJtdXgtYW5kcm9pZC1hYXJjaDY0LnppcApiYXNoIGluc3RhbGwuc2gKCiMgUnVuCnBpLXRlcm11eCAtLXZlcnNpb24KYGBgCgpVc2UgYHBpLXRlcm11eGAgKG5vdCBgcGlgKSB0byBhdm9pZCBjbGFzaGluZyB3aXRoIGFueSBleGlzdGluZyBpbnN0YWxsLgoKIyMgQ3VzdG9tIG1vZGVsIGVuZHBvaW50CgpQaSBzdXBwb3J0cyBPcGVuQUktY29tcGF0aWJsZSBlbmRwb2ludHMgdmlhIGB+Ly5waS9tb2RlbHMuanNvbmA6CgpgYGBqc29uCnsKICAicHJvdmlkZXJzIjogewogICAgIm15LWVuZHBvaW50IjogewogICAgICAiYmFzZVVybCI6ICJodHRwOi8vbG9jYWxob3N0OjExNDM0L3YxIiwKICAgICAgImFwaSI6ICJvcGVuYWktY29tcGxldGlvbnMiLAogICAgICAiYXBpS2V5IjogIm9sbGFtYSIsCiAgICAgICJtb2RlbHMiOiBbeyAiaWQiOiAicXdlbjIuNS1jb2Rlcjo3YiIgfV0KICAgIH0KICB9Cn0KYGBgCgpUaGVuIHBpY2sgdGhlIG1vZGVsIHdpdGggYC9tb2RlbGAgaW5zaWRlIFBpLgoKIyMgSG93IGl0IHdvcmtzCgotIGB0ZXJtdXgvcGlgIOKAlCBsYXVuY2hlciBzY3JpcHQuIEV4cG9ydHMgYFBJX1BBQ0tBR0VfRElSYCBzbyBQaSBmaW5kcyBpdHMKICBgcGFja2FnZS5qc29uYCAodmVyc2lvbiksIGBkb2NzL2AsIGFuZCBgdGhlbWUvYCBhc3NldHMuIFRoaXMgd29ya3MgYXJvdW5kCiAgYSBCdW4tb24tQW5kcm9pZCBidWcgd2hlcmUgYHByb2Nlc3MuZXhlY1BhdGhgIHBvaW50cyB0bwogIGAvYXBleC9jb20uYW5kcm9pZC5ydW50aW1lL2Jpbi9saW5rZXI2NGAgaW5zdGVhZCBvZiB0aGUgYWN0dWFsIGJpbmFyeS4KLSBgdGVybXV4L2luc3RhbGwuc2hgIOKAlCBpbnN0YWxscyBgcGkuYmluYCwgdGhlIGxhdW5jaGVyLCBgcGFja2FnZS5qc29uYCwKICBgZG9jcy9gLCBgdGhlbWUvYCwgYW5kIGBhc3NldHMvYCBpbnRvIGAkUFJFRklYL2xpYmV4ZWMvcGktdGVybXV4YC4KCiMjIEJ1aWxkaW5nIGZyb20gc291cmNlCgpSZXF1aXJlbWVudHM6IE5vZGUuanMgMjArLCBCdW4gMS40LjIuCgpgYGBzaApiYXNoIHNjcmlwdHMvYnVpbGQtcGktYW5kcm9pZC5zaApgYGAKCkJ1aWxkIHN0ZXBzIChQaSB2MS4zLjApOgoKMS4gQ2xvbmUgYGVhcmVuZGlsLXdvcmtzL3BpYCwgYG5wbSBpbnN0YWxsIC0taWdub3JlLXNjcmlwdHNgCjIuIEJ1aWxkIHdvcmtzcGFjZSBwYWNrYWdlcyB3aXRoIHRzYzogYHR1aWAsIGBhaWAsIGBhZ2VudGAsCiAgIGBjb2RlbW9kZWAsIGBtY3BgLCBgdGVsZW1ldHJ5YCAoY29kaW5nLWFnZW50IGZhaWxzIFRTMjMwNyB3aXRob3V0IGNvZGVtb2RlKQozLiBgbnBtIHJ1biBidWlsZGAgaW4gYHBhY2thZ2VzL2NvZGluZy1hZ2VudGAg4oaSIGBkaXN0L2J1bi9jbGkuanNgCjQuIENvbXBpbGUgd2l0aCBCdW46CiAgIGBgYAogICBidW4gYnVpbGQgLi9kaXN0L2J1bi9jbGkuanMgLi9zcmMvdXRpbHMvaW1hZ2UtcmVzaXplLXdvcmtlci50cyBcCiAgICAgLi9zcmMvZXh0ZW5zaW9ucy9jb2RlbW9kZS93b3JrZXIudHMgXAogICAgIC0tY29tcGlsZSAtLXRhcmdldD1idW4tYW5kcm9pZC1hcm02NCBcCiAgICAgLS1uby1jb21waWxlLWF1dG9sb2FkLWJ1bmZpZyAtLW5vLWNvbXBpbGUtYXV0b2xvYWQtZG90ZW52IFwKICAgICAtLW91dGZpbGUgcGkuYmluCiAgIGBgYAogICAqKkltcG9ydGFudDoqKiBjb21waWxlIHRoZSBvZmZpY2lhbCBlbnRyeXBvaW50IGBkaXN0L2J1bi9jbGkuanNgLCBub3QKICAgYGRpc3QvYnVuZGxlL2NsaS5qc2AgKHRoZSBsYXR0ZXIgbG9hZHMgc2libGluZyBmaWxlcyBhdCBydW50aW1lIGFuZCBmYWlscwogICB3aXRoICJDYW5ub3QgZmluZCBtb2R1bGUgJy4vY2xpLXJ1bnRpbWUuanMnIikuCjUuIFBhY2thZ2UgYHBpLmJpbmAgKyB3cmFwcGVyICsgYHBhY2thZ2UuanNvbmAgKyBgZG9jcy9gICsgYHRoZW1lL2AgKwogICBgYXNzZXRzL2AgaW50byBhIHppcC4KCiMjIExpY2Vuc2UKCldyYXBwZXIgc2NyaXB0czogTUlULiBQaSBpdHNlbGYgaXMgTUlUIGJ5IEVhcmVuZGlsLgo=
+# pi-termux
+
+Run the **Pi coding agent** natively on **Termux** (Android aarch64).
+
+Pi ([earendil-works/pi](https://github.com/earendil-works/pi)) is a
+token-efficient coding agent (sub-1,000-token system prompt) with 4 core tools
+(Read/Write/Edit/Bash) and built-in MCP support. It has **no native
+dependencies** and already bundles to a single file, making it the easiest
+agent to port to Termux.
+
+## Quick install
+
+```sh
+# Download the latest pi-termux zip from Releases
+mkdir ~/pi-termux && cd ~/pi-termux
+unzip ~/pi-termux-android-aarch64.zip
+bash install.sh
+
+# Run
+pi-termux --version
+```
+
+Use `pi-termux` (not `pi`) to avoid clashing with any existing install.
+
+## Custom model endpoint
+
+Pi supports OpenAI-compatible endpoints via `~/.pi/models.json`:
+
+```json
+{
+  "providers": {
+    "my-endpoint": {
+      "baseUrl": "http://localhost:11434/v1",
+      "api": "openai-completions",
+      "apiKey": "ollama",
+      "models": [{ "id": "qwen2.5-coder:7b" }]
+    }
+  }
+}
+```
+
+Then pick the model with `/model` inside Pi.
+
+## How it works
+
+- `termux/pi` — launcher script. Exports `PI_PACKAGE_DIR` so Pi finds its
+  `package.json` (version), `docs/`, and `theme/` assets. This works around
+  a Bun-on-Android bug where `process.execPath` points to
+  `/apex/com.android.runtime/bin/linker64` instead of the actual binary.
+- `termux/install.sh` — installs `pi.bin`, the launcher, `package.json`,
+  `docs/`, `theme/`, and `assets/` into `$PREFIX/libexec/pi-termux`.
+
+## Building from source
+
+Requirements: Node.js 20+, Bun 1.4.2.
+
+```sh
+bash scripts/build-pi-android.sh
+```
+
+Build steps (Pi v1.3.0):
+
+1. Clone `earendil-works/pi`, `npm install --ignore-scripts`
+2. Build workspace packages with tsc: `tui`, `ai`, `agent`,
+   `codemode`, `mcp`, `telemetry` (coding-agent fails TS2307 without codemode)
+3. `npm run build` in `packages/coding-agent` → `dist/bun/cli.js`
+4. Compile with Bun:
+   ```
+   bun build ./dist/bun/cli.js ./src/utils/image-resize-worker.ts \
+     ./src/extensions/codemode/worker.ts \
+     --compile --target=bun-android-arm64 \
+     --no-compile-autoload-bunfig --no-compile-autoload-dotenv \
+     --outfile pi.bin
+   ```
+   **Important:** compile the official entrypoint `dist/bun/cli.js`, not
+   `dist/bundle/cli.js` (the latter loads sibling files at runtime and fails
+   with "Cannot find module './cli-runtime.js'").
+5. Package `pi.bin` + wrapper + `package.json` + `docs/` + `theme/` +
+   `assets/` into a zip.
+
+## License
+
+Wrapper scripts: MIT. Pi itself is MIT by Earendil.
