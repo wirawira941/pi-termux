@@ -1,1 +1,53 @@
-IyEvdXNyL2Jpbi9lbnYgYmFzaAojIEJ1aWxkIHRoZSBQaSBjb2RpbmcgYWdlbnQgZm9yIEFuZHJvaWQgYWFyY2g2NCB2aWEgQnVuLgojIFJlcXVpcmVtZW50czogTm9kZS5qcyAyMCssIEJ1biAxLjQuMgojIFVzYWdlOiBiYXNoIHNjcmlwdHMvYnVpbGQtcGktYW5kcm9pZC5zaCBbcGktdmVyc2lvbl0Kc2V0IC1ldW8gcGlwZWZhaWwKClBJX1ZFUlNJT049IiR7MTotdjEuMy4wfSIKV09SS0RJUj0iJChwd2QpL3BpLWJ1aWxkIgpPVVRESVI9IiQocHdkKS9wa2ciCgplY2hvICI9PT0gQ2xvbmluZyBwaSAkUElfVkVSU0lPTiA9PT0iCnJtIC1yZiAiJFdPUktESVIiCmdpdCBjbG9uZSAtLWRlcHRoIDEgLS1icmFuY2ggIiRQSV9WRVJTSU9OIiBodHRwczovL2dpdGh1Yi5jb20vZWFyZW5kaWwtd29ya3MvcGkgIiRXT1JLRElSL3BpLXNyYyIKY2QgIiRXT1JLRElSL3BpLXNyYyIKCmVjaG8gIj09PSBJbnN0YWxsaW5nIGRlcGVuZGVuY2llcyA9PT0iCm5wbSBpbnN0YWxsIC0taWdub3JlLXNjcmlwdHMKCmVjaG8gIj09PSBCdWlsZGluZyB3b3Jrc3BhY2UgcGFja2FnZXMgKHRzYykgPT09IgojIGNvZGluZy1hZ2VudCBidWlsZCBmYWlscyB3aXRoIFRTMjMwNyB1bmxlc3MgdGhlc2UgYXJlIGJ1aWx0IGZpcnN0CmZvciBwa2cgaW4gdHVpIGFpIGFnZW50IGNvZGVtb2RlIG1jcCB0ZWxlbWV0cnk7IGRvCiAgZWNobyAiLS0tIGJ1aWxkaW5nIHBhY2thZ2VzLyRwa2ciCiAgKGNkICJwYWNrYWdlcy8kcGtnIiAmJiBucHggdHNjIC1iIDI+L2Rldi9udWxsIHx8IG5weCB0c2MgLXAgdHNjb25maWcuanNvbikKZG9uZQoKZWNobyAiPT09IEJ1aWxkaW5nIGNvZGluZy1hZ2VudCA9PT0iCihjZCBwYWNrYWdlcy9jb2RpbmctYWdlbnQgJiYgbnBtIHJ1biBidWlsZCkKCmVjaG8gIj09PSBDb21waWxpbmcgZm9yIEFuZHJvaWQgYWFyY2g2NCA9PT0iCmNkIHBhY2thZ2VzL2NvZGluZy1hZ2VudApidW4gYnVpbGQgLi9kaXN0L2J1bi9jbGkuanMgLi9zcmMvdXRpbHMvaW1hZ2UtcmVzaXplLXdvcmtlci50cyBcCiAgLi9zcmMvZXh0ZW5zaW9ucy9jb2RlbW9kZS93b3JrZXIudHMgXAogIC0tY29tcGlsZSAtLXRhcmdldD1idW4tYW5kcm9pZC1hcm02NCBcCiAgLS1taW5pZnkgXAogIC0tbm8tY29tcGlsZS1hdXRvbG9hZC1idW5maWcgLS1uby1jb21waWxlLWF1dG9sb2FkLWRvdGVudiBcCiAgLS1vdXRmaWxlICIkV09SS0RJUi9waS5iaW4iCgpmaWxlICIkV09SS0RJUi9waS5iaW4iCgplY2hvICI9PT0gUGFja2FnaW5nID09PSIKcm0gLXJmICIkT1VURElSIgpta2RpciAtcCAiJE9VVERJUi90aGVtZSIgIiRPVVRESVIvYXNzZXRzIgpjcCAiJFdPUktESVIvcGkuYmluIiAiJE9VVERJUi9waS5iaW4iCmNwIC4uLy4uL3BpLXRlcm11eC90ZXJtdXgvcGkgIiRPVVRESVIvcGkiCmNwIC4uLy4uL3BpLXRlcm11eC90ZXJtdXgvaW5zdGFsbC5zaCAiJE9VVERJUi9pbnN0YWxsLnNoIgpjcCBwYWNrYWdlLmpzb24gIiRPVVRESVIvcGFja2FnZS5qc29uIgpjcCAtciBkb2NzICIkT1VURElSL2RvY3MiCmNwIHNyYy9tb2Rlcy9pbnRlcmFjdGl2ZS90aGVtZS9kYXJrLmpzb24gc3JjL21vZGVzL2ludGVyYWN0aXZlL3RoZW1lL2xpZ2h0Lmpzb24gIiRPVVRESVIvdGhlbWUvIgpjcCBzcmMvbW9kZXMvaW50ZXJhY3RpdmUvYXNzZXRzLyoucG5nICIkT1VURElSL2Fzc2V0cy8iIDI+L2Rldi9udWxsIHx8IHRydWUKY2htb2QgNzU1ICIkT1VURElSL3BpIiAiJE9VVERJUi9pbnN0YWxsLnNoIgoKZWNobyAiPT09IERvbmU6ICRPVVRESVIgPT09IgpscyAtbGEgIiRPVVRESVIiCg==
+#!/usr/bin/env bash
+# Build the Pi coding agent for Android aarch64 via Bun.
+# Requirements: Node.js 20+, Bun 1.4.2
+# Usage: bash scripts/build-pi-android.sh [pi-version]
+set -euo pipefail
+
+PI_VERSION="${1:-v1.3.0}"
+WORKDIR="$(pwd)/pi-build"
+OUTDIR="$(pwd)/pkg"
+
+echo "=== Cloning pi $PI_VERSION ==="
+rm -rf "$WORKDIR"
+git clone --depth 1 --branch "$PI_VERSION" https://github.com/earendil-works/pi "$WORKDIR/pi-src"
+cd "$WORKDIR/pi-src"
+
+echo "=== Installing dependencies ==="
+npm install --ignore-scripts
+
+echo "=== Building workspace packages (tsc) ==="
+# coding-agent build fails with TS2307 unless these are built first
+for pkg in tui ai agent codemode mcp telemetry; do
+  echo "--- building packages/$pkg"
+  (cd "packages/$pkg" && npx tsc -b 2>/dev/null || npx tsc -p tsconfig.json)
+done
+
+echo "=== Building coding-agent ==="
+(cd packages/coding-agent && npm run build)
+
+echo "=== Compiling for Android aarch64 ==="
+cd packages/coding-agent
+bun build ./dist/bun/cli.js ./src/utils/image-resize-worker.ts \
+  ./src/extensions/codemode/worker.ts \
+  --compile --target=bun-android-arm64 \
+  --minify \
+  --no-compile-autoload-bunfig --no-compile-autoload-dotenv \
+  --outfile "$WORKDIR/pi.bin"
+
+file "$WORKDIR/pi.bin"
+
+echo "=== Packaging ==="
+rm -rf "$OUTDIR"
+mkdir -p "$OUTDIR/theme" "$OUTDIR/assets"
+cp "$WORKDIR/pi.bin" "$OUTDIR/pi.bin"
+cp ../../pi-termux/termux/pi "$OUTDIR/pi"
+cp ../../pi-termux/termux/install.sh "$OUTDIR/install.sh"
+cp package.json "$OUTDIR/package.json"
+cp -r docs "$OUTDIR/docs"
+cp src/modes/interactive/theme/dark.json src/modes/interactive/theme/light.json "$OUTDIR/theme/"
+cp src/modes/interactive/assets/*.png "$OUTDIR/assets/" 2>/dev/null || true
+chmod 755 "$OUTDIR/pi" "$OUTDIR/install.sh"
+
+echo "=== Done: $OUTDIR ==="
+ls -la "$OUTDIR"
