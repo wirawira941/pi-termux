@@ -1,0 +1,106 @@
+# Build Pi coding agent natively for Android/Termux (aarch64).
+#
+# Produces pi-termux-android-aarch64.zip containing:
+#   - pi.bin (Bun-compiled Android binary)
+#   - pi (launcher script with PI_PACKAGE_DIR fix)
+#   - install.sh, package.json, docs/, theme/, assets/
+#
+# Trigger: Actions tab -> "build" -> Run workflow.
+
+name: build
+
+on:
+  workflow_dispatch:
+    inputs:
+      pi_ref:
+        description: "Git ref of earendil-works/pi to build (branch, tag, or SHA)"
+        required: false
+        default: "v1.3.0"
+      create_release:
+        description: "Attach the zip to a GitHub release"
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: pi-termux
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.4.2"
+
+      - name: Clone Pi
+        run: |
+          git clone --depth 1 --branch "${{ inputs.pi_ref }}" \
+            https://github.com/earendil-works/pi.git /tmp/pi-src
+
+      - name: Install dependencies
+        working-directory: /tmp/pi-src
+        run: npm install --ignore-scripts
+
+      - name: Build workspace packages
+        working-directory: /tmp/pi-src
+        run: |
+          # coding-agent build fails with TS2307 unless these are built first
+          for pkg in tui ai agent codemode mcp telemetry; do
+            echo "--- building packages/$pkg"
+            (cd "packages/$pkg" && npx tsc -b 2>/dev/null || npx tsc -p tsconfig.json)
+          done
+
+      - name: Build coding-agent
+        working-directory: /tmp/pi-src/packages/coding-agent
+        run: npm run build
+
+      - name: Compile for Android
+        working-directory: /tmp/pi-src/packages/coding-agent
+        run: |
+          bun build ./dist/bun/cli.js ./src/utils/image-resize-worker.ts \
+            ./src/extensions/codemode/worker.ts \
+            --compile --target=bun-android-arm64 \
+            --minify \
+            --no-compile-autoload-bunfig --no-compile-autoload-dotenv \
+            --outfile /tmp/pi.bin
+          file /tmp/pi.bin
+
+      - name: Assemble Termux package
+        run: |
+          PKG="${{ runner.temp }}/pkg"
+          mkdir -p "$PKG/theme" "$PKG/assets"
+          cp /tmp/pi.bin "$PKG/pi.bin"
+          cp pi-termux/termux/pi pi-termux/termux/install.sh "$PKG/"
+          cp /tmp/pi-src/packages/coding-agent/package.json "$PKG/"
+          cp -r /tmp/pi-src/packages/coding-agent/docs "$PKG/docs"
+          cp /tmp/pi-src/packages/coding-agent/src/modes/interactive/theme/dark.json \
+             /tmp/pi-src/packages/coding-agent/src/modes/interactive/theme/light.json \
+             "$PKG/theme/"
+          cp /tmp/pi-src/packages/coding-agent/src/modes/interactive/assets/*.png "$PKG/assets/" || true
+          chmod 755 "$PKG/pi" "$PKG/install.sh" "$PKG/pi.bin"
+          cd "$PKG" && zip -9 -r "${{ runner.temp }}/pi-termux-android-aarch64.zip" .
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pi-termux-android-aarch64
+          path: ${{ runner.temp }}/pi-termux-android-aarch64.zip
+
+      - name: Create release
+        if: ${{ inputs.create_release }}
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: android-${{ github.run_number }}
+          name: "pi-termux Android build #${{ github.run_number }}"
+          files: ${{ runner.temp }}/pi-termux-android-aarch64.zip
+          body: |
+            Native Android (aarch64) build of the Pi coding agent for Termux.
+            See README.md for install instructions.
