@@ -61,9 +61,17 @@ bash scripts/build-pi-android.sh
 Build steps (Pi v1.3.0):
 
 1. Clone `earendil-works/pi`, `npm install --ignore-scripts`
-2. Build workspace packages with tsc: `tui`, `ai`, `agent`,
-   `codemode`, `mcp`, `telemetry` (coding-agent fails TS2307 without codemode)
-3. `npm run build` in `packages/coding-agent` → `dist/bun/cli.js`
+2. Build workspace packages with tsc, in this order (`telemetry` must come
+   before `ai`, which imports `@earendil-works/pi-telemetry`):
+   `telemetry`, `tui`, `ai`, `agent`, `codemode`, `mcp`
+   - before building `ai`, generate its model data:
+     `(cd packages/ai && bun scripts/generate-models.ts --strict)`
+     (run with bun — plain node can't execute `.ts` files)
+   - build each package with `npx tsc -p tsconfig.build.json`
+   (coding-agent fails with TS2307 unless these are built first)
+3. `npm run build:unbundled` in `packages/coding-agent` → `dist/bun/cli.js`
+   (not `npm run build` — the bundle validation step fails on Node 20
+   because `node:sqlite` only exists since Node 22.5)
 4. Compile with Bun:
    ```
    bun build ./dist/bun/cli.js ./src/utils/image-resize-worker.ts \

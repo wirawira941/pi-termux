@@ -17,14 +17,23 @@ echo "=== Installing dependencies ==="
 npm install --ignore-scripts
 
 echo "=== Building workspace packages (tsc) ==="
-# coding-agent build fails with TS2307 unless these are built first
-for pkg in tui ai agent codemode mcp telemetry; do
+# coding-agent build fails with TS2307 unless these are built first.
+# telemetry must come before ai (ai imports @earendil-works/pi-telemetry).
+for pkg in telemetry tui ai agent codemode mcp; do
   echo "--- building packages/$pkg"
-  (cd "packages/$pkg" && npx tsc -b 2>/dev/null || npx tsc -p tsconfig.json)
+  # ai needs its model data generated first; the generate-models script is
+  # TypeScript so it must run under bun (plain node can't run .ts files).
+  if [ "$pkg" = "ai" ]; then
+    (cd "packages/ai" && bun scripts/generate-models.ts --strict)
+  fi
+  (cd "packages/$pkg" && npx tsc -p tsconfig.build.json)
 done
 
 echo "=== Building coding-agent ==="
-(cd packages/coding-agent && npm run build)
+# NB: build:unbundled, not build — the bundle validation script fails on
+# Node 20 (isBuiltin('node:sqlite') is false; node:sqlite was added in 22.5).
+# We compile from dist/bun/cli.js anyway, so the bundle step is unnecessary.
+(cd packages/coding-agent && npm run build:unbundled)
 
 echo "=== Compiling for Android aarch64 ==="
 cd packages/coding-agent
@@ -47,7 +56,7 @@ cp package.json "$OUTDIR/package.json"
 cp -r docs "$OUTDIR/docs"
 cp src/modes/interactive/theme/dark.json src/modes/interactive/theme/light.json "$OUTDIR/theme/"
 cp src/modes/interactive/assets/*.png "$OUTDIR/assets/" 2>/dev/null || true
-chmod 755 "$OUTDIR/pi" "$OUTDIR/install.sh"
+chmod 755 "$OUTDIR/pi" "$OUTDIR/install.sh" "$OUTDIR/pi.bin"
 
 echo "=== Done: $OUTDIR ==="
 ls -la "$OUTDIR"
