@@ -17,7 +17,7 @@ on:
       pi_ref:
         description: "Git ref of earendil-works/pi to build (branch, tag, or SHA)"
         required: false
-        default: "v1.3.0"
+        default: "v1.6.0"
       create_release:
         description: "Attach the zip to a GitHub release"
         required: false
@@ -35,7 +35,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -55,15 +55,19 @@ jobs:
         working-directory: /tmp/pi-src
         run: |
           # coding-agent build fails with TS2307 unless these are built first.
-          # telemetry must come before ai (ai imports @earendil-works/pi-telemetry).
-          for pkg in telemetry tui ai agent codemode mcp; do
+          # Order matters: schema before chord; telemetry/schema before ai;
+          # chord/ai/codemode/schema/telemetry before durable; chord/durable
+          # before env; ai/schema before agent.
+          for pkg in telemetry schema chord tui codemode mcp ai durable env agent; do
             echo "--- building packages/$pkg"
-            # ai needs its model data generated first; the generate-models
-            # script is TypeScript so run it with bun (plain node can't).
             if [ "$pkg" = "ai" ]; then
-              (cd "packages/ai" && bun scripts/generate-models.ts --strict)
+              # Model data generation is TypeScript; bun handles it without
+              # relying on Node's type-stripping support. build:offline also
+              # copies src/providers/data into dist for the compiled binary.
+              (cd "packages/ai" && bun catalog/generate.ts --strict && npm run build:offline)
+            else
+              (cd "packages/$pkg" && npm run build)
             fi
-            (cd "packages/$pkg" && npx tsc -p tsconfig.build.json)
           done
 
       - name: Build coding-agent
