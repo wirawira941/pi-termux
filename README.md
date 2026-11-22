@@ -52,26 +52,27 @@ Then pick the model with `/model` inside Pi.
 
 ## Building from source
 
-Requirements: Node.js 20+, Bun 1.4.2.
+Requirements: Node.js 22.19+, Bun 1.4.2.
 
 ```sh
 bash scripts/build-pi-android.sh
 ```
 
-Build steps (Pi v1.3.0):
+Build steps (Pi v1.6.0):
 
 1. Clone `earendil-works/pi`, `npm install --ignore-scripts`
-2. Build workspace packages with tsc, in this order (`telemetry` must come
-   before `ai`, which imports `@earendil-works/pi-telemetry`):
-   `telemetry`, `tui`, `ai`, `agent`, `codemode`, `mcp`
-   - before building `ai`, generate its model data:
-     `(cd packages/ai && bun scripts/generate-models.ts --strict)`
-     (run with bun — plain node can't execute `.ts` files)
-   - build each package with `npx tsc -p tsconfig.build.json`
+2. Build workspace packages in dependency order:
+   `telemetry`, `schema`, `chord`, `tui`, `codemode`, `mcp`, `ai`,
+   `durable`, `env`, `agent`
+   - build each package with `npm run build`
+   - for `ai`, generate its model data first:
+     `(cd packages/ai && bun catalog/generate.ts --strict)`
+     then run `npm run build:offline` (it validates the generated data,
+     compiles with tsc, and copies `src/providers/data` into `dist/`)
    (coding-agent fails with TS2307 unless these are built first)
 3. `npm run build:unbundled` in `packages/coding-agent` → `dist/bun/cli.js`
-   (not `npm run build` — the bundle validation step fails on Node 20
-   because `node:sqlite` only exists since Node 22.5)
+   (not `npm run build` — the bundle validation step is unnecessary here
+   because we compile from `dist/bun/cli.js`)
 4. Compile with Bun:
    ```
    bun build ./dist/bun/cli.js ./src/utils/image-resize-worker.ts \

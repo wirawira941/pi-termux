@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # Build the Pi coding agent for Android aarch64 via Bun.
-# Requirements: Node.js 20+, Bun 1.4.2
+# Requirements: Node.js 22.19+, Bun 1.4.2
 # Usage: bash scripts/build-pi-android.sh [pi-version]
 set -euo pipefail
 
-PI_VERSION="${1:-v1.3.0}"
+PI_VERSION="${1:-v1.6.0}"
 WORKDIR="$(pwd)/pi-build"
 OUTDIR="$(pwd)/pkg"
 
@@ -16,23 +16,26 @@ cd "$WORKDIR/pi-src"
 echo "=== Installing dependencies ==="
 npm install --ignore-scripts
 
-echo "=== Building workspace packages (tsc) ==="
+echo "=== Building workspace packages ==="
 # coding-agent build fails with TS2307 unless these are built first.
-# telemetry must come before ai (ai imports @earendil-works/pi-telemetry).
-for pkg in telemetry tui ai agent codemode mcp; do
+# Order matters: schema before chord; telemetry/schema before ai;
+# chord/ai/codemode/schema/telemetry before durable; chord/durable
+# before env; ai/schema before agent.
+for pkg in telemetry schema chord tui codemode mcp ai durable env agent; do
   echo "--- building packages/$pkg"
-  # ai needs its model data generated first; the generate-models script is
-  # TypeScript so it must run under bun (plain node can't run .ts files).
   if [ "$pkg" = "ai" ]; then
-    (cd "packages/ai" && bun scripts/generate-models.ts --strict)
+    # Model data generation is TypeScript; bun handles it without relying
+    # on Node's type-stripping support. build:offline also copies
+    # src/providers/data into dist for the compiled binary.
+    (cd "packages/ai" && bun catalog/generate.ts --strict && npm run build:offline)
+  else
+    (cd "packages/$pkg" && npm run build)
   fi
-  (cd "packages/$pkg" && npx tsc -p tsconfig.build.json)
 done
 
 echo "=== Building coding-agent ==="
-# NB: build:unbundled, not build — the bundle validation script fails on
-# Node 20 (isBuiltin('node:sqlite') is false; node:sqlite was added in 22.5).
-# We compile from dist/bun/cli.js anyway, so the bundle step is unnecessary.
+# NB: build:unbundled, not build — we compile from dist/bun/cli.js anyway,
+# so the extra bundle validation step is unnecessary.
 (cd packages/coding-agent && npm run build:unbundled)
 
 echo "=== Compiling for Android aarch64 ==="
